@@ -37,8 +37,8 @@ antidote load   # grabbing pluggins from .zsh_plugins.txt
 
 
     # syntax highlighting 
-fast-theme CONFIG:overlay   # points fast syntax highlighting to the overlay.ini file which makes a few small changes to the syntax highlighting
-
+  # points fast syntax highlighting to the overlay.ini file which makes a few small changes to the syntax highlighting
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(brackets pattern cursor)
 # ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main pattern cursor)       # setting all highliters to be used 
 
-# ZSH_HIGHLIGHT_STYLES[default]='fg=cyan'
+#ZSH_HIGHLIGHT_STYLES[default]='fg=cyan'
