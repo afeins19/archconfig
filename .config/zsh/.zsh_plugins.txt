@@ -1,3 +1,8 @@
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search 
+zpm-zsh/colors 
+zsh-users/zsh-syntax-highlighting 
+
 ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/wd
