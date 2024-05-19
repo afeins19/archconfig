@@ -1,4 +1,4 @@
-add_newline = false
+add_newline = false 
 
 format = """
 $cmd_duration\
@@ -27,12 +27,12 @@ $character\
 """
 
 right_format = """
-$directory\
 $custom\
 $jobs\
 $status\
 $os\
 $container\
+$directory\
 """
 
     # random cool icons
@@ -116,12 +116,12 @@ error_symbol = "[](dimmed italic gray)"
 # how to display the directory 
 [directory]
 format = '[$path]($style) '
-truncation_length = 4
+#truncation_length = 4
 truncate_to_repo = true
 style = 'dimmed italic #ededed'
 home_symbol = ' ' 
 repo_root_style= 'italic #74ebee' # no repo show here (will use repo module )
-repo_root_format = '󰜘 [$repo_root]($repo_root_style)[$path]($style) '
+#repo_root_format = '󰜘 [$repo_root]($repo_root_style)[$path]($style) '
 #repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style) '
 
 # how to display how long it took a command to run

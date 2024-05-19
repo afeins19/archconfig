@@ -1,6 +1,8 @@
-zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions kind:defer
 zsh-users/zsh-history-substring-search kind:defer
+zpm-zsh/colors kind:defer
+zsh-users/zsh-syntax-highlighting kind:defer
+
 
 ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
