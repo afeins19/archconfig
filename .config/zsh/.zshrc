@@ -15,6 +15,7 @@ compinit
 eval "$(starship init zsh)"
 
 
+
     # Custon Aliases
 # csp  >>> quick print out of disk space in the following format: {used}/{available} (x% used)
 alias csp="df -BG | awk 'NR>1 {used += \$3+0; total += \$2+0} END {perc=int(used/total*100); print used \" GB / \" total \" GB (\" perc \"% used)\"}'"
@@ -26,11 +27,36 @@ alias c="clear"
 alias yadml="lazygit -ucd .local/share/yadm/lazygit -w ~ -g .local/share/yadm/repo.git"
 
 # ff >>> fastfatch 
-alias ff="fastfetch --title-color-user yellow --cpu-temp true --gpu-temp true --disk-use-available true --player-name Spotify"
+alias ff="fastfetch --title-color-user white --cpu-temp true --gpu-temp true --disk-use-available true --player-name Spotify"
+
+# wtr >> gets weather by calling a custom script: $HOME/.config/zsh/.scripts/weather.sh
+alias wtr="$HOME/.config/zsh/.scripts/weather.sh"
+
+# png >> test ping to www.google.com with a reasonable time and count
+alias png="ping www.google.com -c5"
+
+# pacup >> updates the local db for files and then finds which ones are out of date
+alias pacup="sudo pacman -Sy && pacman -Qu"
+
+# paclist >> sudo pacman -Qe 
+alias paclist="pacman -Qe"
+
+# pacfind >> sudo pacman -Qe | grep $1 -> finds if a specific package exists 
+pacfind() {
+    pacman -Qe | grep "$1"
+}
+
+# pacup >> updates
+
+    # Exports
 
 # exporting the path to custom alias pages along with the default MANPATH
 export MANPATH="/usr/share/man:/usr/share/man/custom_man:$MANPATH"
 
+# exporting Global Environtment Variables for Scripts
+export LOCATION="Warminster,PA"
+export WORK_EMAIL="afeinberg35@gmail.com"
+export MAIN_EMAIL="aaronman227@gmail.com"
 
     # Antidote
 
@@ -50,7 +76,6 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets pattern cursor)
     # Main Highlighters 
 fg_main='fg=#ff8feb'                                                        # magenta from starship.toml 
 fg_warn='fg=#f6fc47,bold'                                                   # yellow  
-fg_sudo='fg=#6bfc3a'
 
 fg_orange='fg=#ffbb5c'
 
@@ -65,7 +90,7 @@ ZSH_HIGHLIGHT_STYLES[precommand]=$fg_main
 ZSH_HIGHLIGHT_STYLES[arg0]=$fg_main
 ZSH_HIGHLIGHT_STYLES[builtin]=$fg_main 
 ZSH_HIGHLIGHT_STYLES[alias]=$fg_main                                        # more pinkkkk
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=$fg_orange                       # light orange
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#ffff80'                       # light orange
 ZSH_HIGHLIGHT_STYLES[command-substitution]=$fg_sudo                         # just to make it clear 
 ZSH_HIGHLIGHT_STYLES[command-substitution-qouted]=$fg_sudo
 ZSH_HIGHLIGHT_STYLES[command-substitution-unqouted]=$fg_sudo
@@ -81,7 +106,8 @@ ZSH_HIGHLIGHT_STYLES[bracket-level-1]=$fg_warn
 
     # Special Patterns Highlighters
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf' $fg_warn)                                 # if pattern is matched change the highlighting 
-ZSH_HIGHLIGHT_PATTERNS+=('sudo' $fg_sudo)
+ZSH_HIGHLIGHT_PATTERNS+=('sudo' $fg_warn)
+ZSH_HIGHLIGHT_PATTERNS+=('$' 'fg=#33ff33')
 
     # Cursor Highlighter
 ZSH_HIGHLIGHT_STYLES[cursor]='fg=white,underline'

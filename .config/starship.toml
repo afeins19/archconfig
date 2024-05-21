@@ -7,7 +7,6 @@ $localip\
 $shlvl\
 $shell\
 $env_var\
-$username\
 $sudo\
 $package\
 $c\
@@ -98,11 +97,13 @@ $directory\
 # c_sharp_logo = ''
 # vim_logo =''
 # linux_crystal = ''
+# tails_logo = ''
+
 # sushi = ''
 # fruit_slice = ''
 # ramen = '󱅾'
 # block_with_chevron = '󰚺'
-# blocks_3d = ''
+# 3d = '   󰆧'
 # toad = '󰮭'
 
 
@@ -119,7 +120,7 @@ format = '[$path]($style) '
 #truncation_length = 4
 truncate_to_repo = true
 style = 'dimmed italic #ededed'
-home_symbol = ' ' 
+home_symbol = '󰮭 ' 
 repo_root_style= 'italic #74ebee' # no repo show here (will use repo module )
 #repo_root_format = '󰜘 [$repo_root]($repo_root_style)[$path]($style) '
 #repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style) '
@@ -190,10 +191,22 @@ symbol = 'ஃ '
 version_format = 'v${raw}'                    # raw version 
 detect_extensions = ['jl']                    # when to trigger this module (when these extensions are found)
 
+# for directories with packages
+[package]
+symbol = ' '   # parachute box ss
+format = '$symbol '
+disabled = true
+
+# when directory has .py files 
+[python]
+symbol = ' 󰪰 '      # python logo 
+style = 'dimmed gray'
+format = '([$symbol](#ffff80)[$virtualenv](dimmed white))'
+pyenv_version_name = false
+detect_files=['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
+
 
 # when in root mode or in an ssh session
 [username]
 show_always = false
-format = '󰣇 ($style)' 
-style_root = 'bold yellow'
-style_user = 'bold purple'
+format = '[$user]($style) ' 
