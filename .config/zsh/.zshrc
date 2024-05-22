@@ -15,8 +15,8 @@ compinit
 eval "$(starship init zsh)"
 
 
+# -------------------------------------- Custon Aliases--------------------------------------
 
-    # Custon Aliases
 # csp  >>> quick print out of disk space in the following format: {used}/{available} (x% used)
 alias csp="df -BG | awk 'NR>1 {used += \$3+0; total += \$2+0} END {perc=int(used/total*100); print used \" GB / \" total \" GB (\" perc \"% used)\"}'"
 
@@ -41,14 +41,16 @@ alias pacup="sudo pacman -Sy && pacman -Qu"
 # paclist >> sudo pacman -Qe 
 alias paclist="pacman -Qe"
 
+# wbr >> killall waybar && waybar & disown -> restarts waybar but disowns the child process from the terminal that spawned it 
+alias wbr="killall waybar && waybar & disown"
+
 # pacfind >> sudo pacman -Qe | grep $1 -> finds if a specific package exists 
 pacfind() {
     pacman -Qe | grep "$1"
 }
 
-# pacup >> updates
 
-    # Exports
+# -------------------------------------- Exports --------------------------------------
 
 # exporting the path to custom alias pages along with the default MANPATH
 export MANPATH="/usr/share/man:/usr/share/man/custom_man:$MANPATH"
@@ -65,7 +67,7 @@ antidote load   # grabbing pluggins from .zsh_plugins.txt
 
 
 
-# -------------------------------------- syntax highlighting ------------------------------
+# -------------------------------------- syntax highlighting --------------------------------------
 
 # plugin location 
 source ${ZDOTDIR:-~}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -75,8 +77,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets pattern cursor)
 
     # Main Highlighters 
 fg_main='fg=#ff8feb'                                                        # magenta from starship.toml 
-fg_warn='fg=#f6fc47,bold'                                                   # yellow  
-
+fg_warn='fg=#FF579D,bold'                                                   # yellow  
 fg_orange='fg=#ffbb5c'
 
 ZSH_HIGHLIGHT_STYLES[default]='fg=white'                                    # everything thats not explicitely mentioned is white 
@@ -111,7 +112,7 @@ ZSH_HIGHLIGHT_PATTERNS+=('$' 'fg=#33ff33')
 
     # Cursor Highlighter
 ZSH_HIGHLIGHT_STYLES[cursor]='fg=white,underline'
-# -----------------------------------------------------------------------------------------
+
 
 
 
