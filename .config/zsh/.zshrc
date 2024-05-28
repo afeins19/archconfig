@@ -49,6 +49,12 @@ pacfind() {
     pacman -Qe | grep "$1"
 }
 
+# pp >> pretty print | custom fancy printer 
+pp() {
+    figlet -f lean -c -p $1 | lolcat -a -s 75  
+}
+
+
 
 # -------------------------------------- Exports --------------------------------------
 
@@ -65,7 +71,8 @@ export MAIN_EMAIL="aaronman227@gmail.com"
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load   # grabbing pluggins from .zsh_plugins.txt
 
-
+    # Spicetify
+export PATH="$HOME/.spicety:$PATH"
 
 # -------------------------------------- syntax highlighting --------------------------------------
 
@@ -117,3 +124,5 @@ ZSH_HIGHLIGHT_STYLES[cursor]='fg=white,underline'
 
 
 
+
+export PATH=$PATH:/home/aaron/.spicetify

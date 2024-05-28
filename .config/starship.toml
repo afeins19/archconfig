@@ -106,6 +106,7 @@ $directory\
 # 3d = '   󰆧'
 # toad = '󰮭'
 
+# 3d_git_bash = ''
 
 # the prompt character
 [character]
@@ -120,7 +121,7 @@ format = '[$path]($style) '
 #truncation_length = 4
 truncate_to_repo = true
 style = 'dimmed italic #ededed'
-home_symbol = '󰮭 ' 
+home_symbol = ''
 repo_root_style= 'italic #74ebee' # no repo show here (will use repo module )
 #repo_root_format = '󰜘 [$repo_root]($repo_root_style)[$path]($style) '
 #repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style) '
@@ -133,10 +134,10 @@ min_time = 3_000 # show only if commands take longer than 3 seconds
 
 
 [git_branch]
-format = '[$symbol$branch($remote_branch)]($style) '
+format = '[$symbol$branch]($style) '
 style = 'italic #74ebee'
-symbol = ' 󰌹 '
-truncation_symbol = '... '
+symbol = '󰌹 '
+
 
 
 # repo stats (changes)
@@ -146,22 +147,22 @@ deleted_style = 'red'
 only_nonzero_diffs = true                                           # only show if diffs exist
 format = '[+$added]($added_style)|[-$deleted]($deleted_style) '
 
-
 # local status wrt to repo
 [git_status]
-disabled = false 
-format = '([$all_status$ahead_behind]($style))'
+disabled = false
+format = '($all_status)(ahead_behind)($style)'
+#format = '($modified$deleted$staged$untracked$conflicted$ahead$behind$diverged$up_to_date)($style) '
 style = 'dimmed italic gray'
 # branch status symbols 
-up_to_date = ' '                                # check
-modified = ' '                                  # insertion
-deleted = '${count} '                          # x 
+up_to_date = '  '                                # check
+modified = '$count '                                  # insertion
+deleted = '$count '                          # x 
 conflicted = '󱈸 '                               # !
-staged = '${count} '                         # + 
-ahead = '${count} '                            # up carrot
-behind = '${count} '                           # down carrot
-diverged = '⇕ ⇡${ahead_count}⇣${behind_count} '   # bidirectional & counts 
-untracked = '󰈉${count} '                                # dashed closed eye
+staged = '$count '                         # + 
+ahead = '$count '                            # up carrot
+behind = '$count '                           # down carrot
+diverged = '⇕ ⇡[$ahead_count]⇣[$behind_count] '   # bidirectional & counts 
+untracked = ' 󰈉$count '                                # dashed closed eye
 
 
 # The git_state module will show in directories which are part of a git repository, and where there is an operation in progress
@@ -178,7 +179,8 @@ ssh_symbol = ' '                   # jupiter
 
 # Background Jobs
 [jobs] 
-symbol = ' '                       # person running 
+symbol = '($style) '               # person running 
+style = 'dimmed italic gray'
 number_threshold = 1                # threshold to display the number 
 symbol_threshold = 1                # threshold to display the symbol 
 
@@ -193,7 +195,7 @@ detect_extensions = ['jl']                    # when to trigger this module (whe
 
 # for directories with packages
 [package]
-symbol = ' '   # parachute box ss
+symbol = ' '   # parachute box 
 format = '$symbol '
 disabled = true
 
