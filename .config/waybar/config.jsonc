@@ -1,0 +1,227 @@
+{       
+    // global
+    "bar_id" : "bar_top",
+    "ipc" : true, 
+
+    "modules-left": [
+        "workspaces",
+        "tray",
+        "cpu",
+        "custom/gpu",
+       // "temperature",
+        "memory",
+        "disk",
+        "custom/pacman"
+        
+    ], // sway/mode //"cava"
+    "modules-center": [
+        "custom/media",
+        "wlr/taskbar"
+    ], //"custom/cava"
+    /* "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "custom/power"], */
+    "modules-right": [
+        "custom/scratchpad-indicator",
+        "pulseaudio",
+        "network",
+        "clock",
+        "custom/weather",
+        "custom/power"
+    ],
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{icon} ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{icon}  {essid}  @ {signalStrength}% \n {ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "󰤫",
+        "format-alt": "{icon}  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ] // 󰤨 GET WIFI ANYWHERE YOU GO
+    },
+    "clock": {
+        // "tooltip-format": "<big>{:%Y %B}1</big>\n<tt><small>{calendar}</small></tt>",
+        // "format-alt": "{:%Y-%m-%d}"
+        "format": "󱑍  {:%I:%M   󰃭   %m-%d}",
+        "format-alt": "󱑍  {:%r   󰃭  %a %m-%d}",
+        "interval": 1,
+        "tooltip": true,
+        "tooltip-format": "󱑍   {:%r | %m-%d} \n <tt><small>{calendar}</small></tt>", // shows time with seconds and calendar 
+        "calendar": {
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+        // "on-click": "gnome-calendar"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}  {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        "format-muted": " ",
+        "format-source": " ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/power": {
+        "format": " ",
+        "on-click": "hyprlock"
+    },
+    "custom/scratchpad-indicator": {
+        "format-text": "{}",
+        "return-type": "json",
+        "interval": 3,
+        "exec": "~/.local/bin/scratchpad-indicator 2> /dev/null",
+        "exec-if": "exit 0",
+        "on-click": "swaymsg 'scratchpad show'",
+        "on-click-right": "swaymsg 'move scratchpad'"
+    },
+    "custom/weather": {
+        "format": "| {}",
+        //"format-alt": "{alt}: {}",
+        //"format-alt-click": "click-left",
+        "interval": 1000,
+        "return-type": "json",
+        "exec": "/$HOME/.config/waybar/scripts/get_weather.sh",
+        "exec-if": "ping wttr.in -c1"
+        //"on-click-right": "kitty --start-as fullscreen bash -ci ~/bin/wttr"
+        // "on-click-right": "alacritty -e bash -ci ~/bin/wttr"
+    },
+    "custom/media": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "$HOME/.config/waybar/scripts/get_media.sh"
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "󱨇   {usage}%",
+        "tooltip": true,
+        "format-alt": "󱨇   {usage}%  󰊕 {avg_frequency}Gz "
+    },
+
+    "custom/gpu" :{
+        "interval": 1,
+        "exec": "echo $(awk '{print $1/1000 \"°\"}' /sys/class/hwmon/hwmon2/temp1_input)", //gpu_busy_percent for percent use
+        "format": "  {}",
+        "tooltip" : true,
+        "tooltip-format": "  {}°C",
+        "return-type": "",
+        
+    }, 
+    // "temperature": {
+    //     "interval": 15,
+    //     "format": "󰈸  {temperatureC}°C",
+    //     "format-alt": "󰈸  {temperatureC}°C "
+    // },
+    "memory": {
+        "interval": 1,
+        "format": "󰞯   {used:0.1}GB",
+        "format-alt": "󰞯  {used:0.1}GB   󱇇  {percentage}%  ",
+        "tool-tip" : true,
+        "tooltip-format" : "{used:0.01f}/{total} GB used      ({percentage}% used)"
+    },
+    "disk": {
+        "format": "   {percentage_used}%",
+        "format-alt": "   {free} / {total}",
+        "tooltip": true,
+        "tooltip-format": "{free}/{total} free      ({percentage_free}% free)"
+    },
+    "custom/pacman" : {
+        "format" : " {}",
+        "exec" : "$HOME/.config/waybar/scripts/get_pacman_stats.sh", // gets the first line from the script (number of packages to download)
+        "tooltip": true,
+        "tooltip-format": "   {}",
+        "interval" : 1800,
+        "on-click" : "kitty sh -c pacman -Qe"
+    },
+//     "cava": {
+// //        "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+//         "framerate": 30,
+//         "autosens": 1,
+//         "sensitivity": 100,
+//         "bars": 14,
+//         "lower_cutoff_freq": 50,
+//         "higher_cutoff_freq": 10000,
+//         "method": "pulse",
+//         "source": "auto",
+//         "stereo": true,
+//         "reverse": false,
+//         "bar_delimiter": 0,
+//         "monstercat": false,
+//         "waves": false,
+//         "noise_reduction": 0.77,
+//         "input_delay": 2,
+//         "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+//         "actions": {
+//                     "on-click-right": "mode"
+//                     }
+//             },
+    "workspaces": {
+        "format": "{name}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "",
+            "2": "󰈹",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            //"active": "",
+            "default": ""
+        }
+    },
+    "tray": {
+        "show-passive-items": true,
+        "icon-size": 18,
+        "spacing": 10
+    },
+
+    "wlr/taskbar": {
+        // for selecting visibility from the css
+        "id": "cen",
+        "all-outputs": false,
+        "icon-size": 14,
+        "icon-theme": "Numix-Circle",
+        "tooltip-format": "{title}", 
+        //"on-click": "hyprctl dispatch focuswindow",
+        "on-click-right": "minimize",
+        "on-click-middle": "close",
+        "on-scroll-up": "hyprctl dispatch cyclenext",
+        "on-scroll-down": "hyprctl dispatch cycleprev",
+        "on-update" : "~/.config/waybar/scripts/check_taskbar_state.sh",
+        "return-type" : "json",
+        "format": "{icon}"
+      }
+
+
+}
