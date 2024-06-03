@@ -131,10 +131,10 @@
 
     "custom/gpu" :{
         "interval": 1,
-        "exec": "echo $(awk '{print $1/1000 \"°\"}' /sys/class/hwmon/hwmon2/temp1_input)", //gpu_busy_percent for percent use
+        "exec": "echo $(awk '{printf \"%d°\", $1/1000}' /sys/class/hwmon/hwmon2/temp1_input)",
         "format": "  {}",
         "tooltip" : true,
-        "tooltip-format": "  {}°C",
+        "tooltip-format": "  {}C",
         "return-type": "",
         
     }, 
@@ -154,7 +154,7 @@
         "format": "   {percentage_used}%",
         "format-alt": "   {free} / {total}",
         "tooltip": true,
-        "tooltip-format": "{free}/{total} free      ({percentage_free}% free)"
+        "tooltip-format": "     boot  \n  {free}/{total} free  \n     ({percentage_free}% free)"
     },
     "custom/pacman" : {
         "format" : " {}",
@@ -218,7 +218,6 @@
         "on-click-middle": "close",
         "on-scroll-up": "hyprctl dispatch cyclenext",
         "on-scroll-down": "hyprctl dispatch cycleprev",
-        "on-update" : "~/.config/waybar/scripts/check_taskbar_state.sh",
         "return-type" : "json",
         "format": "{icon}"
       }
