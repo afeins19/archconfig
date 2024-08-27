@@ -17,6 +17,9 @@ eval "$(starship init zsh)"
 
 # -------------------------------------- Custon Aliases--------------------------------------
 
+# bs >>> starts bashtop 
+alias bs="bashtop"
+
 # csp  >>> quick print out of disk space in the following format: {used}/{available} (x% used)
 alias csp="df -BG | awk 'NR>1 {used += \$3+0; total += \$2+0} END {perc=int(used/total*100); print used \" GB / \" total \" GB (\" perc \"% used)\"}'"
 
@@ -36,10 +39,10 @@ alias wtr="$HOME/.config/zsh/.scripts/weather.sh"
 alias png="ping www.google.com -c5"
 
 # pacup >> updates the local db for files and then finds which ones are out of date
-alias pacup="sudo pacman -Sy && pacman -Qu"
+alias pacup="sudo pacman -Sy && pacman -Qu && echo 'Updates: $(pacman -Qu | wc -l)'"
 
-# paclist >> sudo pacman -Qe 
-alias paclist="pacman -Qe"
+# paclist >> sudo pacman -Qe ... lists all pacman packages 
+alias paclist="pacman -Qe && echo 'Total: $(pacman -Qe | wc -l)'"
 
 # wbr >> killall waybar && waybar & disown -> restarts waybar but disowns the child process from the terminal that spawned it 
 alias wbr="killall waybar && waybar & disown"

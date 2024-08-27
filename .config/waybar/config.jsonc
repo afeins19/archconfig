@@ -112,7 +112,7 @@
         //"format-alt-click": "click-left",
         "interval": 1000,
         "return-type": "json",
-        "exec": "/$HOME/.config/waybar/scripts/get_weather.sh",
+        "exec": "curl 'https://wttr.in/yardley?format=%l+%c%t\n'",
         "exec-if": "ping wttr.in -c1"
         //"on-click-right": "kitty --start-as fullscreen bash -ci ~/bin/wttr"
         // "on-click-right": "alacritty -e bash -ci ~/bin/wttr"
@@ -152,16 +152,15 @@
     },
     "disk": {
         "format": "   {percentage_used}%",
-        "format-alt": "   {free} / {total}",
+        "format-alt": "   {used} / {total}",
         "tooltip": true,
-        "tooltip-format": "     boot  \n  {free}/{total} free  \n     ({percentage_free}% free)"
+        "tooltip-format": "     boot  \n  {used}/{total} free  \n     ({percentage_used}% used)"
     },
     "custom/pacman" : {
         "format" : " {}",
         "exec" : "$HOME/.config/waybar/scripts/get_pacman_stats.sh", // gets the first line from the script (number of packages to download)
         "tooltip": true,
         "tooltip-format": "   {}",
-        "interval" : 1800,
         "on-click" : "kitty sh -c pacman -Qe"
     },
 //     "cava": {

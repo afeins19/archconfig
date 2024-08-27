@@ -1,4 +1,4 @@
-#files: 832	version: 5.9
+#files: 837	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -325,6 +325,7 @@ _comps=(
 'extractres' '_psutils'
 'fakeroot' '_fakeroot'
 'false' '_nothing'
+'fastfetch' '_fastfetch'
 'fc' '_fc'
 'fc-list' '_xft_fonts'
 'fc-match' '_xft_fonts'
@@ -599,6 +600,7 @@ _comps=(
 'iftop' '_iftop'
 'ifup' '_net_interfaces'
 'ijoin' '_ispell'
+'img2sixel' '_img2sixel'
 'import' '_imagemagick'
 'inc' '_mh'
 'includeres' '_psutils'
@@ -755,6 +757,7 @@ _comps=(
 'mencal' '_mencal'
 'mere' '_mere'
 'merge' '_rcs'
+'meson' '_meson'
 'metaflac' '_flac'
 'mformat' '_mtools'
 'mgv' '_pspdf'
@@ -800,6 +803,7 @@ _comps=(
 'mpc' '_mpc'
 'mplayer' '_mplayer'
 'mpstat' '_sysstat'
+'mpv' '_mpv'
 'mr' '_myrepos'
 'mrd' '_mtools'
 'mread' '_mtools'
@@ -846,6 +850,7 @@ _comps=(
 'nginx' '_nginx'
 'ngrep' '_ngrep'
 'nice' '_nice'
+'ninja' '_ninja'
 'nkf' '_nkf'
 'nl' '_nl'
 'nm' '_nm'
@@ -1685,9 +1690,10 @@ bindkey '^[~' _bash_complete-word
 
 autoload -Uz _atuin _bluetoothctl _bootctl _busctl _bwrap \
             _codium _coredumpctl _curl _dotnet _dunst \
-            _dunstctl _gh _hostnamectl _hyprctl _hyprpm \
-            _journalctl _kernel-install _kitty _libinput _localectl \
-            _loginctl _machinectl _mkinitcpio _networkctl _oomctl \
+            _dunstctl _fastfetch _gh _hostnamectl _hyprctl \
+            _hyprpm _img2sixel _journalctl _kernel-install _kitty \
+            _libinput _localectl _loginctl _machinectl _meson \
+            _mkinitcpio _mpv _networkctl _ninja _oomctl \
             _pacman _pip _playerctl _poetry _pulseaudio \
             _rainbow _resolvectl _rg _run0 _sd_hosts_or_user_at_host \
             _sd_machines _sd_outputmodes _sd_unit_files _shtab _sqv \
