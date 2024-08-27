@@ -1,0 +1,51 @@
+/* ---- Configuration ---- */
+
+/*
+    Flat type theme with borderless elements and dark tones
+
+*/
+configuration {
+    modi:                       "window,drun,run";
+    font:                       "Fira Sans 11";
+    show-icons:                 true;
+    icon-theme:                 "Papirus-Dark";
+    display-drun:               "Apps";
+    display-run:                "RUN";
+    display-filebrowser:        "FILES";
+    display-window:             "Window";
+	drun-display-format:        "{name}";
+    hover-select:               false;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    window-format:              "{w} · {c} · {t}";
+    
+}
+
+// this removes interference from the default theme 
+@theme "/dev/null"
+
+// universal specs 
+* {
+    bg: #11121D; // some transparency
+    bg-alt: #444b6a;
+
+    fg: #FFFFFF;
+    fg-alt: #787c99;
+
+    background-color: @bg;
+
+    border: 0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    width: 45%; 
+}
+
+element {
+    padding: 12;
+    text-color: @fg-alt;
+}
+
