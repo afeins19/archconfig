@@ -6,5 +6,5 @@ network_status=$(nmcli device status | awk 'NR>1 {print $3; exit}'| awk '{print 
 
 case $network_status in 
 "disconnected") notify-send -u critical "WiFi" "disconnected";;
-"connected") notify-send -u critical "WiFi" "u good";;
+"connected") notify-send "WiFi" "U Good";;
 esac

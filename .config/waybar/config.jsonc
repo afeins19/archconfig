@@ -51,6 +51,7 @@
         "format": "󱑍  {:%I:%M   󰃭   %m-%d}",
         "format-alt": "󱑍  {:%r   󰃭  %a %m-%d}",
         "interval": 1,
+        "timezone": "America/New_York",
         "tooltip": true,
         "tooltip-format": "󱑍   {:%r | %m-%d} \n <tt><small>{calendar}</small></tt>", // shows time with seconds and calendar 
         "calendar": {
@@ -148,20 +149,21 @@
         "format": "󰞯   {used:0.1}GB",
         "format-alt": "󰞯  {used:0.1}GB   󱇇  {percentage}%  ",
         "tool-tip" : true,
-        "tooltip-format" : "{used:0.01f}/{total} GB used      ({percentage}% used)"
+        "tooltip-format" : "{used:0.01f}/{total} GB Used      ({percentage}% Used)"
     },
     "disk": {
         "format": "   {percentage_used}%",
         "format-alt": "   {used} / {total}",
         "tooltip": true,
-        "tooltip-format": "     boot  \n  {used}/{total} free  \n     ({percentage_used}% used)"
+        "tooltip-format": "     boot  \n  {used}/{total} used  \n     ({percentage_used}% used)"
     },
     "custom/pacman" : {
+        "Inteval": 10000,
         "format" : " {}",
         "exec" : "$HOME/.config/waybar/scripts/get_pacman_stats.sh", // gets the first line from the script (number of packages to download)
         "tooltip": true,
         "tooltip-format": "   {}",
-        "on-click" : "kitty sh -c pacman -Qe"
+        "on-click" : "kitty sh -c yay -Qu"
     },
 //     "cava": {
 // //        "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
