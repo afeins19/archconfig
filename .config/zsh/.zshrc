@@ -57,7 +57,11 @@ pp() {
     figlet -f lean -c -p $1 | lolcat -a -s 75  
 }
 
+# sdn >> shutdown now safely (-p flag) 
+alias sdn="shutdown -P now"
 
+# imgconvert >> convert an image using ffmpeg 
+alias imgconvert="function _imgconvert() { ffmpeg -i \$1 -pix_fmt rgb24  \${@:2}; }; _imgconvert"
 
 # -------------------------------------- Exports --------------------------------------
 
