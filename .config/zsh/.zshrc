@@ -14,7 +14,6 @@ compinit
     # Starship Configuration 
 eval "$(starship init zsh)"
 
-
 # -------------------------------------- Custon Aliases--------------------------------------
 
 # bs >>> starts bashtop 
@@ -61,7 +60,7 @@ pp() {
 alias sdn="shutdown -P now"
 
 # imgconvert >> convert an image using ffmpeg 
-alias imgconvert="function _imgconvert() { ffmpeg -i \$1 -pix_fmt rgb24  \${@:2}; }; _imgconvert"
+# alias imgconvert="function _imgconvert() { ffmpeg -i \$1 -pix_fmt rgb24  \${@:2}; }; _imgconvert"
 
 # -------------------------------------- Exports --------------------------------------
 
