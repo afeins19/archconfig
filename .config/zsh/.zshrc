@@ -25,6 +25,9 @@ alias csp="df -BG | awk 'NR>1 {used += \$3+0; total += \$2+0} END {perc=int(used
 # c >>> clear screen 
 alias c="clear"
 
+# cdd >> equivalent to cd ..
+alias cdd="cd .."
+
 # yadml >>> opens yadm repo in lazygit
 alias yadml="lazygit -ucd .local/share/yadm/lazygit -w ~ -g .local/share/yadm/repo.git"
 
@@ -60,7 +63,10 @@ pp() {
 alias sdn="shutdown -P now"
 
 # imgconvert >> convert an image using ffmpeg 
-# alias imgconvert="function _imgconvert() { ffmpeg -i \$1 -pix_fmt rgb24  \${@:2}; }; _imgconvert"
+alias imgconvert="function _imgconvert() { ffmpeg -i \$1 -pix_fmt rgb24  \${@:2}; }; _imgconvert"
+
+# wcl >> counts the number of files in the directory 
+alias wcl='echo "Items in file: $(( $(ls -l | wc -l) -1 ))"'
 
 # -------------------------------------- Exports --------------------------------------
 
