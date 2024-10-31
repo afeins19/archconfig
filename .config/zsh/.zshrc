@@ -59,6 +59,9 @@ pp() {
     figlet -f lean -c -p $1 | lolcat -a -s 75  
 }
 
+# zsrc >> source the .zshrc file 
+alias zsrc="source ~/.config/zsh/.zshrc"
+
 # sdn >> shutdown now safely (-p flag) 
 alias sdn="shutdown -P now"
 
@@ -67,6 +70,25 @@ alias imgconvert="function _imgconvert() { ffmpeg -i \$1 -pix_fmt rgb24  \${@:2}
 
 # wcl >> counts the number of files in the directory 
 alias wcl='echo "Items in file: $(( $(ls -l | wc -l) -1 ))"'
+
+# Git Shorthand Commands >> Abbreviated git commands (all start with 'g') 
+alias gstatus='git status' 
+alias gcommit='git commit'
+alias gadd='git add'
+alias gpull='git pull'
+alias gpush='git push' 
+alias gfetch='git fetch' 
+alias gbranch='git branch'
+alias gco='git checkout'
+
+# nmsn >> nmap -sn '<current_ip_address>' (gets the current ip and scans the network for devices using nmap)
+alias nmsn='nmap -sn $(ip addr show wlo1 | grep "inet " | awk "{print \$2}" | head -n 1)' 
+
+
+# .zshrc file commands
+
+# zvim >> edit the .zshrc file with nvim 
+alias zvim='sudo nvim ~/.config/zsh/.zshrc' 
 
 # -------------------------------------- Exports --------------------------------------
 
