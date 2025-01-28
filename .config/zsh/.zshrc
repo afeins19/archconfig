@@ -28,6 +28,9 @@ alias c="clear"
 # cdd >> equivalent to cd ..
 alias cdd="cd .."
 
+# cpr >> equivalent to cp -r 
+alias cpr="cp -r"
+
 # yadml >>> opens yadm repo in lazygit
 alias yadml="lazygit -ucd .local/share/yadm/lazygit -w ~ -g .local/share/yadm/repo.git"
 
@@ -56,20 +59,26 @@ pacfind() {
 
 # pp >> pretty print | custom fancy printer 
 pp() {
-    figlet -f lean -c -p $1 | lolcat -a -s 75  
+    clear && figlet -f lean -c -p $1 | lolcat -a -s 75  
 }
 
 # zsrc >> source the .zshrc file 
 alias zsrc="source ~/.config/zsh/.zshrc"
 
 # sdn >> shutdown now safely (-p flag) 
-alias sdn="shutdown -P now"
+alias sdn="uptime -p && sleep 2 && shutdown -P now"
 
 # imgconvert >> convert an image using ffmpeg 
 alias imgconvert="function _imgconvert() { ffmpeg -i \$1 -pix_fmt rgb24  \${@:2}; }; _imgconvert"
 
 # wcl >> counts the number of files in the directory 
 alias wcl='echo "Items in file: $(( $(ls -l | wc -l) -1 ))"'
+
+# donut >> runs donut.py 
+alias donut='cd ~/Projects/donut && poetry shell && python -m donut.py'
+
+# lssh >> cats the output of the ssh config to get ip aliases
+alias lssh='cat ~/.ssh/config'
 
 # Git Shorthand Commands >> Abbreviated git commands (all start with 'g') 
 alias gstatus='git status' 
@@ -85,11 +94,22 @@ alias gco='git checkout'
 alias nmsn='nmap -sn $(ip addr show wlo1 | grep "inet " | awk "{print \$2}" | head -n 1)' 
 
 
+# wifistatus >> nmcli dev wifi | grep '\*' - (first it gets the column names) and then gets the currently connected wifi network stats (if connected)
+alias wifistatus="nmcli dev wifi | awk 'NR==1 || /^\*/'" 
+
+#alias wifistatus="nmcli --color yes dev wifi | awk 'BEGIN {found=0} NR==1 {header=$0} /^\*/ {found=1; print header; print $0} END {if (!found) print \"none\"}'; echo; echo \"Ping test:\"; ping -c 3 www.google.com | awk -F'=' '/time=/ {print \$4} END {if (NR > 0) print \"Average latency: \" sum/NR \" ms\"}' sum=0 NR=0"
+
 # .zshrc file commands
 
 # zvim >> edit the .zshrc file with nvim 
 alias zvim='sudo nvim ~/.config/zsh/.zshrc' 
 
+# rbt >>> reboot 
+alias rbt='reboot'
+
+# pwgensecure >>> pwgen -1 16
+
+alias pwgensecure='pwgen -1 16'
 # -------------------------------------- Exports --------------------------------------
 
 # exporting the path to custom alias pages along with the default MANPATH
@@ -107,6 +127,7 @@ antidote load   # grabbing pluggins from .zsh_plugins.txt
 
     # Spicetify
 export PATH="$HOME/.spicety:$PATH"
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # -------------------------------------- syntax highlighting --------------------------------------
 
@@ -154,9 +175,13 @@ ZSH_HIGHLIGHT_PATTERNS+=('$' 'fg=#33ff33')
     # Cursor Highlighter
 ZSH_HIGHLIGHT_STYLES[cursor]='fg=white,underline'
 
+# EXPORTS 
 
-
-
-
-
+# Spicetify
 export PATH=$PATH:/home/aaron/.spicetify
+
+# Python (Versions managed by pyenv)
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
